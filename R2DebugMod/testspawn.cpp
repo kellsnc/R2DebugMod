@@ -15,7 +15,7 @@ static bool SpawnLevelLoaded;
 void SetSpawnLevel(const std::string& name) {
     if (name.empty() == false) {
         LevelName = name;
-        helperFunctions.PrintDebug("Loading level \"%s\".\n", name.c_str());
+        helperFunctions.PrintDebug("[Debug] Loading level \"%s\".\n", name.c_str());
     }
 }
 

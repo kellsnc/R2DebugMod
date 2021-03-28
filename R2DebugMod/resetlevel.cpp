@@ -9,5 +9,6 @@ void ResetLevel_Init(const IniFile* config) {
 void ResetLevel_OnFrame() {
 	if (ResetLevelButton && GetAsyncKeyState(ResetLevelButton) & KEY_PRESSED) {
 		LoadNextLevel(&g_stEngineStructure.field_1, 0);
+		helperFunctions.PrintDebug("[Debug] Resetting level...\n");
 	}
 }
