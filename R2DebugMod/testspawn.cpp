@@ -21,7 +21,7 @@ void SetSpawnLevel(const std::string& name) {
 
 void TestSpawn_OnFrame() {
     if (SpawnLevelLoaded == false && LevelName.empty() == false) {
-        LoadNextLevel(LevelName.c_str(), 0);
+        GAM_fn_vAskToChangeLevel(LevelName.c_str(), 0);
         SpawnLevelLoaded = true;
     }
 }

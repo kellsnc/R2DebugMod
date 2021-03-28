@@ -17,7 +17,7 @@ extern "C" {
     }
 
     __declspec(dllexport) void __cdecl OnFrame() {
-        if (g_stEngineStructure.engineMode == LEVEL_STATE_LOADED) {
+        if (g_stEngineStructure.engineMode == ENGINE_STATE_INGAME) {
             TestSpawn_OnFrame();
             ResetLevel_OnFrame();
         }
