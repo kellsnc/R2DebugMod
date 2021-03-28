@@ -10,19 +10,22 @@ Loads the game directly into a level by either using the config file, or the "-l
 #include "pch.h"
 
 static std::string LevelName;
-static bool SpawnLevelLoaded;
+static bool NoTestSpawn = false;
 
 void SetSpawnLevel(const std::string& name) {
     if (name.empty() == false) {
         LevelName = name;
         helperFunctions.PrintDebug("[Debug] Loading level \"%s\".\n", name.c_str());
     }
+    else {
+        NoTestSpawn = true;
+    }
 }
 
 void TestSpawn_OnFrame() {
-    if (SpawnLevelLoaded == false && LevelName.empty() == false) {
+    if (NoTestSpawn == false && LevelName.empty() == false) {
         GAM_fn_vAskToChangeLevel(LevelName.c_str(), 0);
-        SpawnLevelLoaded = true;
+        NoTestSpawn = true;
     }
 }
 
