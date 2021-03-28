@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "testspawn.h"
+#include "resetlevel.h"
 
 HelperFunctions helperFunctions;
 
@@ -10,6 +11,7 @@ extern "C" {
         const IniFile* config = new IniFile(std::string(path) + "\\config.ini");
 
         TestSpawn_Init(config);
+        ResetLevel_Init(config);
 
         delete config;
     }
@@ -17,6 +19,7 @@ extern "C" {
     __declspec(dllexport) void __cdecl OnFrame() {
         if (g_stEngineStructure.engineMode == LEVEL_STATE_LOADED) {
             TestSpawn_OnFrame();
+            ResetLevel_OnFrame();
         }
     }
 
