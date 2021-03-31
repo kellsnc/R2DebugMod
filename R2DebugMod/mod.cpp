@@ -2,6 +2,8 @@
 
 HelperFunctions helperFunctions;
 
+static bool CannotDie = false;
+
 extern "C" {
     __declspec(dllexport) void __cdecl Init(const char* path, const HelperFunctions& helperFunctions_) {
         helperFunctions = helperFunctions_;
@@ -12,6 +14,8 @@ extern "C" {
         ResetLevel_Init(config);
         Teleport_Init(config);
 
+        CannotDie = config->getBool("", "CannotDie", CannotDie);
+
         delete config;
     }
 
@@ -20,6 +24,10 @@ extern "C" {
             TestSpawn_OnFrame();
             ResetLevel_OnFrame();
             Teleport_OnFrame();
+
+            if (CannotDie == true) {
+                *GetDataPointerPath<uint32_t>(0x500584, { 0x245 }) = 99;
+            }
         }
     }
 
