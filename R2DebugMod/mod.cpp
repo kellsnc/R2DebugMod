@@ -1,6 +1,4 @@
 #include "pch.h"
-#include "testspawn.h"
-#include "resetlevel.h"
 
 HelperFunctions helperFunctions;
 
@@ -12,6 +10,7 @@ extern "C" {
 
         TestSpawn_Init(config);
         ResetLevel_Init(config);
+        Teleport_Init(config);
 
         delete config;
     }
@@ -20,6 +19,7 @@ extern "C" {
         if (g_stEngineStructure.engineMode == ENGINE_STATE_INGAME) {
             TestSpawn_OnFrame();
             ResetLevel_OnFrame();
+            Teleport_OnFrame();
         }
     }
 
